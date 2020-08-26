@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navigation"
+    app:startDestination="@id/ShoeFragment">
+    <!--  app:startDestination  默认的起始位置-->
+
+    <fragment
+        android:id="@+id/ShoeFragment"
+        android:name="com.hoyouly.jetpackdemo.ui.fragment.main.ShoeFragment"
+        android:label="infoFragment"
+        tools:layout="@layout/fragment_shoe" />
+
+    <fragment
+        android:id="@+id/MarketFragment"
+        android:name="com.hoyouly.jetpackdemo.ui.fragment.main.MarketFragment"
+        android:label="MarketFragment"
+        tools:layout="@layout/fragment_market">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MeFragment"
+        android:name="com.hoyouly.jetpackdemo.ui.fragment.main.MeFragment"
+        android:label="MeFragment"
+        tools:layout="@layout/fragment_me">
+
+    </fragment>
+</navigation>

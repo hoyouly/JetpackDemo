@@ -98,7 +98,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/shape_main_recycle_item_primary"
-            android:enabled="@{(model.p.empty||model.n.empty)?true:false}"
+            android:enabled="@{(model.p.empty||model.n.empty)?false:true}"
             android:onClick="@{()->model.login()}"
             android:text="Sign in"
             android:textSize="@dimen/txt_big_size"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    id  是对应的Fragment，在main_navigation.xml中定义的-->
+    <item
+        android:id="@+id/ShoeFragment"
+        android:icon="@drawable/ic_market"
+        android:title="主页" />
+    <item
+        android:id="@+id/MarketFragment"
+        android:icon="@drawable/ic_favorite"
+        android:title="喜欢" />
+
+    <item
+        android:id="@+id/MeFragment"
+        android:icon="@drawable/ic_me"
+        android:title="我" />
+</menu>

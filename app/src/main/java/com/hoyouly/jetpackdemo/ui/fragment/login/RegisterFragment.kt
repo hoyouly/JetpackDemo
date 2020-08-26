@@ -41,9 +41,10 @@ class RegisterFragment : Fragment() {
         mBtnRegister.setOnClickListener(View.OnClickListener {
             Toast.makeText(
                 activity,
-                "注册",
+                "注册成功",
                 Toast.LENGTH_SHORT
             ).show()
+            activity?.onBackPressed()
         })
         mTvCancel.setOnClickListener({
             activity?.onBackPressed()
