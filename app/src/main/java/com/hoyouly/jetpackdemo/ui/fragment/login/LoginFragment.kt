@@ -15,11 +15,9 @@ import com.hoyouly.jetpackdemo.viewmodel.LoginModel
  * @ Email :   heleik@digitalchina.com
  * @ Description :
  */
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class LoginFragment : Fragment() {
-
+    //lateinit 延迟加载，和lazy一样，只不过lazy只适用于val对象，对于var对象，需要使用lateinit，原理是类似的，
     lateinit var loginModel: LoginModel;
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +26,7 @@ class LoginFragment : Fragment() {
     ): View? {
         val binding = FragmentLoginBinding.inflate(inflater, container, false)
         loginModel = LoginModel("", "", context!!)
+
 
 
         binding.model = loginModel

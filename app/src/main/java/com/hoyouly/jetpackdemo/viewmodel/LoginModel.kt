@@ -57,10 +57,13 @@ class LoginModel constructor(name: String, pwd: String, context: Context) {
         }
     }
 
-
-    @BindingAdapter("addTextChangedListener")
-    fun addTextChangedListener(editText: EditText,simpleWatcher: SimpleWatcher){
-        editText.addTextChangedListener(simpleWatcher)
+    companion object {
+        @JvmStatic
+        @BindingAdapter("addTextChangedListener")
+        fun addTextChangedListener(editText: EditText, simpleWatcher: SimpleWatcher) {
+            editText.addTextChangedListener(simpleWatcher)
+        }
     }
+
 
 }
