@@ -25,6 +25,9 @@
             name="activity"
             type="androidx.fragment.app.FragmentActivity" />
 
+        <variable
+            name="isEnable"
+            type="Boolean" />
         <!--
           import  data中使用，需要使用静态方法和静态常量，如需要使用View.Visble属性的时候，则需导入<import type="android.view.View"/>。
           type属性指明类的路径，如果两个import标签导入的类名相同，则可以使用alias属性声明别名，使用的时候直接使用别名即可。
@@ -98,7 +101,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/shape_main_recycle_item_primary"
-            android:enabled="@{(model.p.empty||model.n.empty)?false:true}"
+            android:enabled="@{isEnable}"
             android:onClick="@{()->model.login()}"
             android:text="Sign in"
             android:textSize="@dimen/txt_big_size"

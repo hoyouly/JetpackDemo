@@ -29,6 +29,8 @@ class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ViewHodler>(ShoeDiffCallback()
         val shoe = getItem(position)
         //apply可以操作一个对象的任意函数
         holder.apply {
+            //bind()是 ViewHodler的一个函数
+            //itemView 是 ViewHodler的一个变量
             bind(onCreateListener(shoe.id), shoe)
             itemView.tag = shoe
         }
@@ -40,6 +42,7 @@ class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ViewHodler>(ShoeDiffCallback()
         }
     }
 
+    //RecyclerItemShoeBinding
     class ViewHodler(private var binding: RecyclerItemShoeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(listener: View.OnClickListener, item: Shoe) {
