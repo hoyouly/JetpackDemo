@@ -1,11 +1,12 @@
 package com.hoyouly.jetpackdemo.ui.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hoyouly.jetpackdemo.databinding.RecyclerItemShoeBinding
 import com.hoyouly.jetpackdemo.db.data.Shoe
@@ -18,7 +19,9 @@ import com.hoyouly.jetpackdemo.db.data.Shoe
  */
 
 
-class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ViewHodler>(ShoeDiffCallback()) {
+class ShoeAdapter constructor(val context: Context) :
+    PagedListAdapter<Shoe, ShoeAdapter.ViewHodler>(ShoeDiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHodler {
         return ViewHodler(
             RecyclerItemShoeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -31,7 +34,7 @@ class ShoeAdapter : ListAdapter<Shoe, ShoeAdapter.ViewHodler>(ShoeDiffCallback()
         holder.apply {
             //bind()是 ViewHodler的一个函数
             //itemView 是 ViewHodler的一个变量
-            bind(onCreateListener(shoe.id), shoe)
+            bind(onCreateListener(shoe!!.id), shoe)
             itemView.tag = shoe
         }
     }

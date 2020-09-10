@@ -32,7 +32,7 @@ class ShoeFragment : Fragment() {
         val binding: FragmentShoeBinding = FragmentShoeBinding.inflate(inflater, container, false)
         context ?: return binding.root
 //        ViewModelProviders.of(this).get(ShoeModel::class.java)
-        val adapter = ShoeAdapter()
+        val adapter = ShoeAdapter(context!!)
         binding.recycler.adapter = adapter
         onSubscribeUi(adapter)
         return binding.root

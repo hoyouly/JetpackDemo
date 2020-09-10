@@ -14,4 +14,7 @@ object BaseConstant {
 
     const val SP_USER_ID = "SP_USER_ID"
 
+
+    // 单个页面大小
+    const val SINGLE_PAGE_SIZE = 10
 }

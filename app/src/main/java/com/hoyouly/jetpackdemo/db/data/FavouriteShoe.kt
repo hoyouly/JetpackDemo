@@ -23,7 +23,7 @@ import java.util.*
             childColumns = ["user_id"]
         )
     ],
-    indices = [Index("shoe_id")] //索引
+    indices = [Index("shoe_id"),Index("user_id")] //索引
 )
 data class FavouriteShoe(
     @ColumnInfo(name = "shoe_id") val shoeId: Long

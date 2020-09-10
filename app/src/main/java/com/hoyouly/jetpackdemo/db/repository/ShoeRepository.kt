@@ -11,11 +11,18 @@ import com.hoyouly.jetpackdemo.db.data.Shoe
  */
 class ShoeRepository private constructor(private val shoeDao: ShoeDao) {
 
+    fun getPageShoes(startIndex: Long, endIndex: Long): List<Shoe> =
+        shoeDao.findShoeByIndexPage(startIndex, endIndex)
+
+
     fun getAllShoes() = shoeDao.getAllShoes()
 
-    fun getShoesByBrand(brand: String) = shoeDao.findShoeByBrand(brand)
+    fun getShoesByBrand(brand: String) = shoeDao.findShoeByBrandLD(brand)
 
-    fun getShoeById(id:Long)=shoeDao.findShoeById(id)
+    fun getShoeById(id: Long) = shoeDao.findShoeByIdLD(id)
+
+
+    fun getShoesByUserId(userId: Long) = shoeDao.findShoeByUserId(userId)
 
     fun insertShoes(shoes: List<Shoe>) = shoeDao.insertShoes(shoes)
 

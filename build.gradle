@@ -9,6 +9,7 @@ buildscript {
     ext.gsonVersion = '2.8.2'
     ext.glideVersion = '4.9.0'
     ext.fragmentVersion = '1.1.0-alpha09'
+    ext.pagingVersion = '2.1.0-alpha01'
 
     repositories {
         google()
