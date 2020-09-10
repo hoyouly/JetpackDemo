@@ -1,11 +1,8 @@
 package com.hoyouly.jetpackdemo.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
-import androidx.paging.LivePagedListBuilder
+import androidx.lifecycle.*
 import androidx.paging.PagedList
+import com.hoyouly.jetpackdemo.common.createPagerList
 import com.hoyouly.jetpackdemo.db.data.Shoe
 import com.hoyouly.jetpackdemo.db.datasource.CustomPageDataSourceFactory
 import com.hoyouly.jetpackdemo.db.repository.ShoeRepository
@@ -26,29 +23,38 @@ class ShoeModel constructor(shoeRepository: ShoeRepository) : ViewModel() {
 
     //shoes 是一个变量，类型是 LiveData<List<Shoe>>
     //    val shoes: LiveData<List<Shoe>> =Transformations.switchMap(brand,Function<String,LiveData<List<Shoe>>>(){
-//    val shoes: LiveData<List<Shoe>> = brand.switchMap {
-//        //  当brand的值变化时就会触发转化函数
-//        if (it == ALL) {
-//            shoeRepository.getAllShoes()
-//        } else {
-//            shoeRepository.getShoesByBrand(it)
-//        }
-//    }
+    val shoes: LiveData<PagedList<Shoe>> = brand.switchMap {
+        //  当brand的值变化时就会触发转化函数
+        if (it == ALL) {
+            CustomPageDataSourceFactory(shoeRepository).createPagerList(10, 10)
+        } else {
+            val array: Array<String> =
+                when (it) {
+                    NIKE -> arrayOf("Nike", "Air Jordan")
+                    ADIDAS -> arrayOf("Adidas")
+                    else -> arrayOf(
+                        "Converse", "UA"
+                        , "ANTA"
+                    )
+                }
+            shoeRepository.getShoesByBrand(array).createPagerList(6, 6)
+        }
+    }
 
 
-    val shoes: LiveData<PagedList<Shoe>> = LivePagedListBuilder<Int, Shoe>(
-        CustomPageDataSourceFactory(shoeRepository)
-        , PagedList.Config.Builder()
-            .setPageSize(10)// 分页加载的数量
-            .setEnablePlaceholders(false)// 当item为null是否使用PlaceHolder展示
-            .setInitialLoadSizeHint(10)//// 预加载的数量
-            .build()//
-    ).build()
+//    val shoes: LiveData<PagedList<Shoe>> = LivePagedListBuilder<Int, Shoe>(
+//        CustomPageDataSourceFactory(shoeRepository)
+//        , PagedList.Config.Builder()
+//            .setPageSize(10)// 分页加载的数量
+//            .setEnablePlaceholders(false)// 当item为null是否使用PlaceHolder展示
+//            .setInitialLoadSizeHint(10)//// 预加载的数量
+//            .build()//
+//    ).build()
 
 
     fun setBrand(brand: String) {
-//        this.brand.value = brand
-        this.brand.postValue(brand)
+        this.brand.value = brand
+//        this.brand.postValue(brand)
         this.brand.map { }
     }
 
@@ -57,6 +63,9 @@ class ShoeModel constructor(shoeRepository: ShoeRepository) : ViewModel() {
     }
 
     companion object {
-        public const val ALL = "所有"
+        const val ALL = "所有"
+        const val NIKE = "Nike"
+        const val ADIDAS = "Adidas"
+        const val OTHER = "other"
     }
 }

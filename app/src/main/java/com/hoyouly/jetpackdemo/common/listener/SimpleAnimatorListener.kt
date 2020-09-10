@@ -1,6 +1,6 @@
 package com.hoyouly.jetpackdemo.common.listener
 
-import android.view.animation.Animation
+import android.animation.Animator
 
 /**
  * @ Time  :  2020-09-10
@@ -9,17 +9,18 @@ import android.view.animation.Animation
  * @ Description :
  */
 
-class SimpleAnimation :Animation.AnimationListener{
-    override fun onAnimationRepeat(animation: Animation?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+open class SimpleAnimatorListener : Animator.AnimatorListener {
+    override fun onAnimationRepeat(animation: Animator?) {
+
     }
 
-    override fun onAnimationEnd(animation: Animation?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onAnimationEnd(animation: Animator?) {
     }
 
-    override fun onAnimationStart(animation: Animation?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onAnimationCancel(animation: Animator?) {
     }
 
+    override fun onAnimationStart(animation: Animator?) {
+    }
 }

@@ -17,7 +17,7 @@ class ShoeRepository private constructor(private val shoeDao: ShoeDao) {
 
     fun getAllShoes() = shoeDao.getAllShoes()
 
-    fun getShoesByBrand(brand: String) = shoeDao.findShoeByBrandLD(brand)
+    fun getShoesByBrand(brand: Array<String>) = shoeDao.findShoesByBrandLD(brand)
 
     fun getShoeById(id: Long) = shoeDao.findShoeByIdLD(id)
 

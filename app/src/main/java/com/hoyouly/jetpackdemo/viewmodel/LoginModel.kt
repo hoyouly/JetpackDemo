@@ -4,9 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
-import android.widget.EditText
 import android.widget.Toast
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -64,6 +62,8 @@ class LoginModel constructor(
                 Toast.makeText(context, "账号密码正确", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context, MainActivity::class.java)
                 context.startActivity(intent)
+            }else{
+                Toast.makeText(context, "账号或密码错误。", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -76,14 +76,4 @@ class LoginModel constructor(
             n.value = p0.toString()
         }
     }
-
-    companion object {
-        @JvmStatic
-        @BindingAdapter("addTextChangedListener")
-        fun addTextChangedListener(editText: EditText, simpleWatcher: SimpleWatcher) {
-            editText.addTextChangedListener(simpleWatcher)
-        }
-    }
-
-
 }

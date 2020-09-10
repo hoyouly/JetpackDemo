@@ -47,7 +47,6 @@ interface ShoeDao {
     fun insertShoes(shoes: List<Shoe>)
 
 
-
     // 删除一双鞋子
     @Delete
     fun deleteShoe(shoe: Shoe)
@@ -67,7 +66,6 @@ interface ShoeDao {
     fun updateShoes(shoes: Array<Shoe>)
 
 
-
     // 通过鞋子的范围寻找Index
     @Query("SELECT * FROM shoe WHERE id BETWEEN :startIndex AND :endIndex")
     fun findShoeByIndexPage(startIndex: Long, endIndex: Long): List<Shoe>
@@ -80,8 +78,8 @@ interface ShoeDao {
     fun findShoeByIdLD(id: Long): LiveData<Shoe>
 
 
-    @Query("SELECT * FROM shoe WHERE shoe_brand=:brand")
-    fun findShoeByBrandLD(brand: String): DataSource.Factory<Int, Shoe>
+    @Query("SELECT * FROM shoe WHERE shoe_brand IN (:brand)")
+    fun findShoesByBrandLD(brand: Array<String>): DataSource.Factory<Int, Shoe>
 
 
     @Query(

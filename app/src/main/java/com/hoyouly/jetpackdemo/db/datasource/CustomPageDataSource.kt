@@ -34,8 +34,6 @@ class CustomPageDataSource(private val shoeRepository: ShoeRepository) :
 
     // 每次分页加载的时候调用
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Shoe>) {
-        Log.e(TAG, "startPage:${params.key},size:${params.requestedLoadSize}")
-
         val startPage = params.key
         val startIndex = ((startPage - 1) * BaseConstant.SINGLE_PAGE_SIZE).toLong() + 1
         val endIndex = startIndex + params.requestedLoadSize - 1

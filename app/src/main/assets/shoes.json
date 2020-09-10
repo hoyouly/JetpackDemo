@@ -41,7 +41,7 @@
   },
   {
     "id": 6,
-    "name": "KD 10",
+    "name": "KD 12",
     "description": "搭载了全新四向飞线鞋面 + 双层 Zoom 的豪华科技配置，还有镂空中底等创新概念，堪称最具颠覆性和革新性的一代。",
     "price": 1299.0,
     "brand": "Nike",
@@ -116,7 +116,7 @@
     "name": "KT 4",
     "description": "ANTA KT4以静水流深为主题，将中国元素与球鞋文化相结合，不但能够在赛场穿着，更可以在日常进行搭配。A-FLASHFOAM科技中底的使用，更是得到汤普森本人的认可。",
     "price": 699.0,
-    "brand": "Adidas",
+    "brand": "ANTA",
     "imageUrl": "https://raw.githubusercontent.com/mCyp/Photo/master/1560652089700.jpeg"
   }
 ]
