@@ -34,10 +34,23 @@ class UserRepository private constructor(private val userDao: UserDao) {
     suspend fun regiest(email: String, account: String, pwd: String): Long {
         //withContext 不会创建新的协程，在指定协程上运行挂起代码块，并挂起该协程直至代码块运行完成。
         return withContext(IO) {
-            userDao.insertUser(User(account, pwd, email))
+            userDao.insertUser(
+                User(
+                    account,
+                    pwd,
+                    email,
+                    "https://raw.githubusercontent.com/mCyp/Photo/master/1560651318109.jpeg"
+                )
+            )
         }
     }
 
+
+    suspend fun updateUser(user: User) {
+        withContext(IO) {
+            userDao.insertUser(user)
+        }
+    }
 
     companion object {
         @Volatile

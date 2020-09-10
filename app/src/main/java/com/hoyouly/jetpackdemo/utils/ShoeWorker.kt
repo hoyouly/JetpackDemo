@@ -21,7 +21,8 @@ class ShoeWorker(context: Context, workerParameters: WorkerParameters) :
     CoroutineWorker(context, workerParameters) {
 
     private val TAG by lazy {
-        ShoeWorker::class.java.simpleName
+//        ShoeWorker::class.java.simpleName
+        "hoyouly"
     }
 
     override suspend fun doWork(): Result = coroutineScope {

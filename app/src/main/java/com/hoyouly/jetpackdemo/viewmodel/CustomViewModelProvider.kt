@@ -6,10 +6,7 @@ import com.hoyouly.jetpackdemo.db.RepositoryProvider
 import com.hoyouly.jetpackdemo.db.repository.FavouriteShoeRespository
 import com.hoyouly.jetpackdemo.db.repository.ShoeRepository
 import com.hoyouly.jetpackdemo.db.repository.UserRepository
-import com.hoyouly.jetpackdemo.viewmodel.factory.FavouriteShoeFatory
-import com.hoyouly.jetpackdemo.viewmodel.factory.LoginModelFactory
-import com.hoyouly.jetpackdemo.viewmodel.factory.RegisteModelFacotry
-import com.hoyouly.jetpackdemo.viewmodel.factory.ShoeModelFactory
+import com.hoyouly.jetpackdemo.viewmodel.factory.*
 
 /**
  * @ Time  :  2020-08-26
@@ -35,6 +32,10 @@ object CustomViewModelProvider {
         return LoginModelFactory(repository, context)
     }
 
+    fun providerMeModel(context: Context): MeModelFactory {
+        val repository:UserRepository = RepositoryProvider.providerUserRepository(context)
+        return MeModelFactory(repository)
+    }
 
     fun providerDetailModel(context: Context, userId: Long, shoeId: Long): FavouriteShoeFatory {
         val favouriteShoeRespository: FavouriteShoeRespository =
