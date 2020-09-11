@@ -2,10 +2,12 @@ package com.hoyouly.jetpackdemo.viewmodel
 
 import android.content.Context
 import androidx.navigation.NavController
+import com.hoyouly.jetpackdemo.common.BaseConstant
 import com.hoyouly.jetpackdemo.db.RepositoryProvider
 import com.hoyouly.jetpackdemo.db.repository.FavouriteShoeRespository
 import com.hoyouly.jetpackdemo.db.repository.ShoeRepository
 import com.hoyouly.jetpackdemo.db.repository.UserRepository
+import com.hoyouly.jetpackdemo.utils.AppPrefsUtils
 import com.hoyouly.jetpackdemo.viewmodel.factory.*
 
 /**
@@ -33,15 +35,21 @@ object CustomViewModelProvider {
     }
 
     fun providerMeModel(context: Context): MeModelFactory {
-        val repository:UserRepository = RepositoryProvider.providerUserRepository(context)
+        val repository: UserRepository = RepositoryProvider.providerUserRepository(context)
         return MeModelFactory(repository)
     }
 
-    fun providerDetailModel(context: Context, userId: Long, shoeId: Long): FavouriteShoeFatory {
+    fun providerDetailModel(context: Context, shoeId: Long, userId: Long): FavouriteShoeFatory {
         val favouriteShoeRespository: FavouriteShoeRespository =
             RepositoryProvider.providerFavouriteShoeRespository(context)
         val shoeRepository: ShoeRepository = RepositoryProvider.providerShoeRepository(context)
 
-        return FavouriteShoeFatory(shoeRepository, favouriteShoeRespository, userId, shoeId)
+        return FavouriteShoeFatory(shoeRepository, favouriteShoeRespository, shoeId, userId)
+    }
+
+    fun providerFavouriteModel(context: Context): FavouriteModelFactory {
+        val repository: ShoeRepository = RepositoryProvider.providerShoeRepository(context)
+        val userId: Long = AppPrefsUtils.getLong(BaseConstant.SP_USER_ID)
+        return FavouriteModelFactory(repository, userId)
     }
 }

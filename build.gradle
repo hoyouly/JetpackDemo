@@ -12,6 +12,7 @@ buildscript {
     ext.pagingVersion = '2.1.0-alpha01'
     ext.sweetVersion = "1.5.1"
     ext.trasnVersion = "4.0.1"
+    ext.lottieVersion = '2.7.0'
 
     repositories {
         google()

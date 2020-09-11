@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.hoyouly.jetpackdemo.MainActivity
+import com.hoyouly.jetpackdemo.ui.activity.MainActivity
 import com.hoyouly.jetpackdemo.common.BaseConstant
 import com.hoyouly.jetpackdemo.common.listener.SimpleWatcher
 import com.hoyouly.jetpackdemo.db.repository.UserRepository

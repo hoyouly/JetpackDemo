@@ -15,11 +15,11 @@ import com.hoyouly.jetpackdemo.viewmodel.DetailModel
 class FavouriteShoeFatory(
     private val shoeRespository: ShoeRepository,
     private val favouriteShoeRespository: FavouriteShoeRespository,
-    private val userId: Long,
-    private val shoeId: Long
+    private val shoeId: Long,
+    private val userId: Long
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return DetailModel(shoeRespository, favouriteShoeRespository, userId, shoeId) as T;
+        return DetailModel(shoeRespository, favouriteShoeRespository, shoeId, userId) as T;
     }
 }

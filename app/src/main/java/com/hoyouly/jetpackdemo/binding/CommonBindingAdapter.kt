@@ -17,7 +17,7 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation
  */
 
 @BindingAdapter("imageFromUrl")
-fun bindImageFromUrl(view: ImageView, imageUrl: String) {
+fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
     if (!imageUrl.isNullOrEmpty()) {
         Glide.with(view.context)
             .load(imageUrl)

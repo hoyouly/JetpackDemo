@@ -21,6 +21,9 @@ object BaseConstant {
 
     const val KEY_IMAGE_URI = "KEY_IMAGE_URI"
 
+    // DetailActivity 传输的数据
+    const val DETAIL_SHOE_ID = "DETAIL_SHOE_ID"
+
 
     @JvmField
     val VERSION_NOTIFICATION_CHANNEL_NAME = "Verbose WorkManager Notifications"

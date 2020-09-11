@@ -14,9 +14,9 @@
 
     <fragment
         android:id="@+id/MarketFragment"
-        android:name="com.hoyouly.jetpackdemo.ui.fragment.main.MarketFragment"
+        android:name="com.hoyouly.jetpackdemo.ui.fragment.main.FavouriteFragment"
         android:label="MarketFragment"
-        tools:layout="@layout/fragment_market">
+        tools:layout="@layout/fragment_favourite">
 
     </fragment>
 
