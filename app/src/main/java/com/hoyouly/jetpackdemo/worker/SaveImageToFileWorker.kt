@@ -54,6 +54,7 @@ class SaveImageToFileWorker(context: Context, params: WorkerParameters) : Worker
                 )
             )
             if (!imageUrl.isNullOrEmpty()) {
+                //KEY_IMAGE_URI to imageUrl  生成一个Pairs对象，可以理解为就是一个键值对，key 是 KEY_IMAGE_URI ，value 是 imageUrl
                 val output = workDataOf(KEY_IMAGE_URI to imageUrl)
                 Result.success(output)
             } else {

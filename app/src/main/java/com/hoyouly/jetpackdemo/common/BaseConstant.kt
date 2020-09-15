@@ -25,7 +25,7 @@ object BaseConstant {
     const val DETAIL_SHOE_ID = "DETAIL_SHOE_ID"
 
 
-    @JvmField
+    @JvmField  //只能修饰属性
     val VERSION_NOTIFICATION_CHANNEL_NAME = "Verbose WorkManager Notifications"
 
 
