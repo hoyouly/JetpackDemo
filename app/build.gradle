@@ -3,16 +3,15 @@ import com.hoyouly.jetpackdemo.DependcyConfig
 import com.hoyouly.jetpackdemo.DependencyLifecycle
 import com.hoyouly.jetpackdemo.DependencyNavigation
 import com.hoyouly.jetpackdemo.DependencyRoom
+import com.hoyouly.jetpackdemo.Hilt
 
 apply plugin: 'com.android.application'
+apply plugin: 'androidx.navigation.safeargs'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion BuildConfig.compileSdkVersion
@@ -35,6 +34,16 @@ android {
         enabled true
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -79,4 +88,10 @@ dependencies {
 
     // Lottie
     implementation DependcyConfig.lottie
+
+    implementation Hilt.daggerRuntime
+    kapt Hilt.daggerCompiler
+
+    implementation Hilt.viewModule
+    kapt Hilt.compiler
 }

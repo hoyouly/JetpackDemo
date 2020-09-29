@@ -15,24 +15,26 @@ object Version {
     val work = "2.1.0-alpha02"
     val gson = "2.8.2"
     val glide = "4.9.0"
-    val fragment = "1.1.0-alpha09"
+    val fragment = "1.3.0-alpha06"
     val paging = "2.1.0-alpha01"
     val sweet = "1.5.1"
     val trasn = "4.0.1"
     val lottie = "2.7.0"
     val appcompat = "1.2.0"
-    val core_ktx = "1.0.2"
+    val coreKtx = "1.3.0"
     val constraintlayout = "1.1.3"
     val junit = "4.12"
     val material = "1.1.0-alpha06"
     val runner = "1.1.1"
     val espresso_core = "3.2.0"
+    val hit = "2.28-alpha"
+    val hitViewModule = "1.0.0-alpha01"
 }
 
 
 object DependcyConfig {
     val appcompat = "androidx.appcompat:appcompat:${Version.appcompat}"
-    val coreKtx = "androidx.core:core-ktx:${Version.core_ktx}"
+    val coreKtx = "androidx.core:core-ktx:${Version.coreKtx}"
     val constraintlayout = "androidx.constraintlayout:constraintlayout:${Version.constraintlayout}"
     val junit = "junit:junit:${Version.junit}"
     val material = "com.google.android.material:material:${Version.material}"
@@ -79,4 +81,12 @@ object DependencyLifecycle {
     // viewModel
     val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
     val extensions = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycle}"
+}
+
+
+object Hilt {
+    val daggerRuntime = "com.google.dagger:hilt-android:${Version.hit}"
+    val daggerCompiler = "com.google.dagger:hilt-android-compiler:${Version.hit}"
+    val viewModule = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.hitViewModule}"
+    val compiler = "androidx.hilt:hilt-compiler:${Version.hitViewModule}"
 }
