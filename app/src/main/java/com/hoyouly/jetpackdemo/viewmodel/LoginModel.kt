@@ -1,15 +1,12 @@
 package com.hoyouly.jetpackdemo.viewmodel
 
-import android.content.Context
-import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
-import android.widget.Toast
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import com.hoyouly.jetpackdemo.ui.activity.MainActivity
 import com.hoyouly.jetpackdemo.common.BaseConstant
 import com.hoyouly.jetpackdemo.common.listener.SimpleWatcher
 import com.hoyouly.jetpackdemo.db.repository.UserRepository
@@ -21,10 +18,7 @@ import com.hoyouly.jetpackdemo.utils.AppPrefsUtils
  * @ Email :   heleik@digitalchina.com
  * @ Description :
  */
-class LoginModel constructor(
-    private val respository: UserRepository,
-    private val context: Context
-) : ViewModel() {
+class LoginModel @ViewModelInject constructor(private val respository: UserRepository) : ViewModel() {
     //ObservableField 是一个可观察的域，通过泛型来使用
     val n = MutableLiveData<String>()
     val p = MutableLiveData<String>()
@@ -57,14 +51,14 @@ class LoginModel constructor(
         val account = n.value!!
 
         respository.login(account, pwd).observe(lifecycleOwner, Observer {
-            if (it != null) {
-                AppPrefsUtils.putLong(BaseConstant.SP_USER_ID, it.id)
-                Toast.makeText(context, "账号密码正确", Toast.LENGTH_SHORT).show()
-                val intent = Intent(context, MainActivity::class.java)
-                context.startActivity(intent)
-            }else{
-                Toast.makeText(context, "账号或密码错误。", Toast.LENGTH_SHORT).show()
-            }
+//            if (it != null) {
+//                AppPrefsUtils.putLong(BaseConstant.SP_USER_ID, it.id)
+//                Toast.makeText(context, "账号密码正确", Toast.LENGTH_SHORT).show()
+//                val intent = Intent(context, MainActivity::class.java)
+//                context.startActivity(intent)
+//            }else{
+//                Toast.makeText(context, "账号或密码错误。", Toast.LENGTH_SHORT).show()
+//            }
         })
     }
 

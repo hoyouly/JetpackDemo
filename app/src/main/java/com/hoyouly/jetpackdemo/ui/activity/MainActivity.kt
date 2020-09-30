@@ -7,7 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hoyouly.jetpackdemo.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     lateinit var bottomNavigation: BottomNavigationView
@@ -15,22 +17,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val host: NavHostFragment =
-//            supportFragmentManager.findFragmentById(R.id.my_nov_host_fragment) as NavHostFragment
-//        val navController = host.navController
+        val host: NavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.my_nov_host_fragment) as NavHostFragment
+        val navController = host.navController
 
-//        initWidget()
-//        initBottomNavigation(bottomNavigation, navController)
+        initWidget()
+        initBottomNavigation(bottomNavigation, navController)
     }
 
-//    private fun initBottomNavigation(
-//        bottomNavigation: BottomNavigationView,
-//        navController: NavController
-//    ) {
-//        bottomNavigation.setupWithNavController(navController)
-//    }
-//
-//    private fun initWidget() {
-//        bottomNavigation = findViewById(R.id.navigation_view)
-//    }
+    private fun initBottomNavigation(
+        bottomNavigation: BottomNavigationView,
+        navController: NavController
+    ) {
+        bottomNavigation.setupWithNavController(navController)
+    }
+
+    private fun initWidget() {
+        bottomNavigation = findViewById(R.id.navigation_view)
+    }
 }

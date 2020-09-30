@@ -26,6 +26,7 @@ class ShoeWorker(context: Context, workerParameters: WorkerParameters) :
     }
 
     override suspend fun doWork(): Result = coroutineScope {
+        Log.e(TAG, "ShoeWorker  doWork:")
         try {
             applicationContext.assets.open("shoes.json").use {
                 JsonReader(it.reader()).use {
@@ -42,6 +43,7 @@ class ShoeWorker(context: Context, workerParameters: WorkerParameters) :
                         }
                         shoeDao.insertShoes(shoeList)
                     }
+                    Log.e(TAG, "ShoeWorker  shoeList:  ${shoeList.size}")
 
                     Result.success()
                 }

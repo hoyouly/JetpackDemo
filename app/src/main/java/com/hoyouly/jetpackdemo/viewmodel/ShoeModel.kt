@@ -1,5 +1,6 @@
 package com.hoyouly.jetpackdemo.viewmodel
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.PagedList
 import com.hoyouly.jetpackdemo.common.createPagerList
@@ -14,7 +15,7 @@ import com.hoyouly.jetpackdemo.db.repository.ShoeRepository
  * @ Description :
  */
 
-class ShoeModel constructor(shoeRepository: ShoeRepository) : ViewModel() {
+class ShoeModel @ViewModelInject constructor(shoeRepository: ShoeRepository) : ViewModel() {
     //brand 是一个不可变变量，类型是 MutableLiveData
     // 创建一种MutableLiveData 类型实例，持有的的是String 类型
     private val brand = MutableLiveData<String>().apply {

@@ -2,6 +2,7 @@ package com.hoyouly.jetpackdemo.ui.fragment.login
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.hoyouly.jetpackdemo.databinding.FragmentLoginBinding
-import com.hoyouly.jetpackdemo.viewmodel.CustomViewModelProvider
+import com.hoyouly.jetpackdemo.db.dao.UserDao
+import com.hoyouly.jetpackdemo.db.repository.UserRepository
 import com.hoyouly.jetpackdemo.viewmodel.LoginModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * @ Time  :  2020-08-24
@@ -19,12 +25,10 @@ import com.hoyouly.jetpackdemo.viewmodel.LoginModel
  * @ Description :
  */
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     //lateinit 延迟加载，和lazy一样，只不过lazy只适用于val对象，对于var对象，需要使用lateinit，原理是类似的，
-    private val loginModel: LoginModel by viewModels {
-        CustomViewModelProvider.providerLoginModel(requireContext())
-    }
-
+    private val loginModel: LoginModel by viewModels()
     var isEnable: Boolean = false
     lateinit var dataBinding: FragmentLoginBinding
 

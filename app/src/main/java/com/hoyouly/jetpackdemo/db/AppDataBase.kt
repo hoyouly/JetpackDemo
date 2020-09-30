@@ -1,6 +1,7 @@
 package com.hoyouly.jetpackdemo.db
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -31,6 +32,7 @@ import com.hoyouly.jetpackdemo.utils.ShoeWorker
 @TypeConverters(Converters::class)
 abstract class AppDataBase : RoomDatabase() {
 
+
     abstract fun shoeDao(): ShoeDao
 
     abstract fun userDao(): UserDao
@@ -39,6 +41,10 @@ abstract class AppDataBase : RoomDatabase() {
 
     //一个companion object（伴随对象） 让这个类的所有对象共享这个伴随对象（object在Kotlin中用来表示单例，Kotlin用Any来表示所有类的基类）
     companion object {
+        private val TAG by lazy {
+//        ShoeWorker::class.java.simpleName
+            "hoyouly"
+        }
         @Volatile
         private var instance: AppDataBase? = null
 
@@ -56,6 +62,7 @@ abstract class AppDataBase : RoomDatabase() {
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
+                        Log.e(TAG, "buildDataBase :")
                         val request = OneTimeWorkRequestBuilder<ShoeWorker>().build()
                         WorkManager.getInstance(context).enqueue(request)
                     }

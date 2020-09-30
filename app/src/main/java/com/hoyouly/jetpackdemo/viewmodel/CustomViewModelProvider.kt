@@ -18,20 +18,9 @@ import com.hoyouly.jetpackdemo.viewmodel.factory.*
  */
 object CustomViewModelProvider {
 
-    fun providerShoeModel(context: Context): ShoeModelFactory {
-        val repository: ShoeRepository = RepositoryProvider.providerShoeRepository(context)
-        return ShoeModelFactory(repository)
-    }
-
-
     fun providerRegistModel(context: Context, navController: NavController): RegisteModelFacotry {
         val repository: UserRepository = RepositoryProvider.providerUserRepository(context)
         return RegisteModelFacotry(repository, navController)
-    }
-
-    fun providerLoginModel(context: Context): LoginModelFactory {
-        val repository: UserRepository = RepositoryProvider.providerUserRepository(context)
-        return LoginModelFactory(repository, context)
     }
 
     fun providerMeModel(context: Context): MeModelFactory {

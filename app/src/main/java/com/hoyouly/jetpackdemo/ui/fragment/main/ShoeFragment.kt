@@ -18,10 +18,16 @@ import androidx.lifecycle.Observer
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hoyouly.jetpackdemo.common.listener.SimpleAnimatorListener
 import com.hoyouly.jetpackdemo.databinding.FragmentShoeBinding
+import com.hoyouly.jetpackdemo.db.dao.ShoeDao
+import com.hoyouly.jetpackdemo.db.repository.ShoeRepository
 import com.hoyouly.jetpackdemo.ui.adapter.ShoeAdapter
 import com.hoyouly.jetpackdemo.utils.UiUtils
 import com.hoyouly.jetpackdemo.viewmodel.CustomViewModelProvider
 import com.hoyouly.jetpackdemo.viewmodel.ShoeModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * @ Time  :  2020-08-24
@@ -29,14 +35,13 @@ import com.hoyouly.jetpackdemo.viewmodel.ShoeModel
  * @ Email :   heleik@digitalchina.com
  * @ Description :
  */
+@AndroidEntryPoint
 class ShoeFragment : Fragment() {
 
     private val TAG by lazy {
         this::class.java.simpleName
     }
-    private val viewModel: ShoeModel by viewModels {
-        CustomViewModelProvider.providerShoeModel(requireContext())
-    }
+    private val viewModel: ShoeModel by viewModels()
 
     private lateinit var mShoe: FloatingActionButton
     private lateinit var mNike: FloatingActionButton
@@ -52,8 +57,15 @@ class ShoeFragment : Fragment() {
 
     // 圆的半径
     private var radius: Int = 0
+
     // FloatingActionButton宽度和高度，宽高一样
     private var width: Int = 0
+
+    @Inject
+    lateinit var shoeDao: ShoeDao
+
+    @Inject
+    lateinit var shoeRepository: ShoeRepository
 
 
     override fun onCreateView(
@@ -62,6 +74,13 @@ class ShoeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding: FragmentShoeBinding = FragmentShoeBinding.inflate(inflater, container, false)
+
+        GlobalScope.launch {
+            shoeDao.getAllShoeLD()
+            shoeRepository.getAllShoes()
+        }
+
+
         context ?: return binding.root
         val adapter = ShoeAdapter(context!!)
         binding.recycler.adapter = adapter
@@ -144,10 +163,7 @@ class ShoeFragment : Fragment() {
     }
 
     private fun getValueAnimator(
-        button: FloatingActionButton
-        , reverse: Boolean
-        , group: Group
-        , angel: Int
+        button: FloatingActionButton, reverse: Boolean, group: Group, angel: Int
     ): ValueAnimator {
         val animator: ValueAnimator
         if (reverse) {
